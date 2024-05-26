@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<stdio.h>
+#include<stdbool.h>
+void solution(int arr[][5],int r,int c,int oc,int nc){
+    if(r<0 || r>4 || c<0 || c>4 || arr[r][c]!=oc || arr[r][c]==nc){
+        return;
+    }
+    arr[r][c]=nc;
+    solution(arr,r,c+1,oc,nc);
+    solution(arr,r+1,c,oc,nc);
+    solution(arr,r,c-1,oc,nc);
+    solution(arr,r-1,c,oc,nc);
+}
+int main(){
+    int arr[5][5]={{1,1,1,1,2},
+                   {2,2,0,2,2},
+                   {3,3,3,0,0},
+                   {3,3,3,0,1},
+                   {4,4,2,1,1}};
+    int oldcolor=3,newcolor=5,r= 2,c= 0;
+        solution(arr,r,c,oldcolor,newcolor);
+              
+        for(int i=0;i<5;i++){
+            for(int j=0;j<5;j++){
+                printf("%d ",arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+//color fill=
+
+
+
