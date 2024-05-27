@@ -1,0 +1,27 @@
+#include<stdio.h>
+int main(){
+    int c[]={2,1,4};
+    int sum=20;
+    int dp[21];
+    for(int i=0;i<=20;i++)
+        dp[i]=999999;
+    dp[0]=0;
+    int max;
+    for(int i=1;i<=sum;i++){
+        for(int j=0;j<3;j++){
+            if(c[j]<=i){
+                int r=dp[i-c[j]];
+                    max=r+1;//2 //1
+                    if(max<dp[i]){
+                        dp[i]=max;// dp[3]=1;i=3=>2
+                    }
+            }
+        }
+        
+    }
+    for(int i=0;i<=20;i++)
+        printf("%d ",dp[i]);
+}
+
+ 
+
