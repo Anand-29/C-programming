@@ -1,0 +1,45 @@
+#include <stdio.h>
+int solution(int arr[],int h){
+    if(h<0){
+        return 0;//3 5 3 h=2;
+    }
+    if(h==0){
+        return arr[h];
+    }
+    int a=0+solution(arr,h-1); //
+    int b=arr[h]+solution(arr,h-2); //
+    if(a>b)
+        return a;
+    else
+        return b;
+}
+int main()
+{
+    //house rober;
+    int arr[5]={3,4,5,2,1};
+    //int p=solution(arr,4);
+    int dp[6]={-1,-1,-1,-1,-1,-1};
+    dp[0]=0;
+    dp[1]=arr[0];
+    for(int i=2;i<=5;i++){
+        int a=0+dp[i-1];
+        int b=arr[i-1]+dp[i-2];
+        if(a>b)
+            dp[i]=a;
+        else
+            dp[i]=b;
+    }
+    for(int i=0;i<=5;i++){
+        printf("%d ",dp[i]);
+    }
+    return 0;
+    
+    
+}
+
+
+
+
+
+
+
